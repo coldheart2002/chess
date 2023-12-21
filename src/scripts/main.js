@@ -1,4 +1,9 @@
+//chessboard tile position array
+const tileLetters = ["A", "B", "C", "D", "E", "F", "G", "H"];
+const tileNumbers = [8, 7, 6, 5, 4, 3, 2, 1];
+
 // generate chess piece
+let chessBoardGrid = document.querySelector("[chessBoardGrid]");
 tileNumbers.forEach((number) => {
   tileLetters.forEach((letter) => {
     let tile = document.createElement("div");
@@ -212,6 +217,8 @@ pieceColorSelector("white");
 pieceColorSelector("black");
 
 //all tiles click lisener
+let tiles = document.querySelectorAll(".tiles");
+
 tiles.forEach((tile) => {
   tile.addEventListener("click", () => {
     let tilePositionX = tile.getAttribute("position-x");
@@ -219,14 +226,13 @@ tiles.forEach((tile) => {
 
     if (tile.querySelector("img") === null) {
       console.log(`tile.position = ${tilePositionX}:${tilePositionY}`);
+      console.log(tile);
     }
     //if there is a piece
     else {
       let selectedPiece = tile.querySelector("img");
       let pieceType = selectedPiece.getAttribute("piece-type");
       let pieceColor = selectedPiece.getAttribute("piece-color");
-
-      //style for selected piece?
 
       //create object
       let chessPiece = new ChessPiece(

@@ -35,8 +35,6 @@ class ChessPiece {
 
   movePawn() {
     console.log("move pawn");
-    console.log(this.number);
-    test();
   }
 
   moveKing() {

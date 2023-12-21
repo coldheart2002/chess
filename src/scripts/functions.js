@@ -26,4 +26,21 @@ function pieceColorSelector(color) {
   });
 }
 
-function movePiece() {}
+function movePiece() {
+  let tiles = document.querySelectorAll(".tiles");
+
+  tiles.forEach((tile) => {
+    tile.addEventListener("click", () => {
+      let tilePiece = tile.querySelector("img");
+      let tilePositionX = tile.getAttribute("position-x");
+      let tilePositionY = tile.getAttribute("position-y");
+      console.log(`${tilePositionX}:${tilePositionY}`);
+
+      console.log(tilePiece);
+
+      // if (tile.querySelector("img") === null) {
+      //   tilePiece.remove();
+      // }
+    });
+  });
+}
