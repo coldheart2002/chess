@@ -224,10 +224,11 @@ tiles.forEach((tile) => {
     let tilePositionX = tile.getAttribute("position-x");
     let tilePositionY = tile.getAttribute("position-y");
 
+    //if there's no piece
     if (tile.querySelector("img") === null) {
       console.log(`tile.position = ${tilePositionX}:${tilePositionY}`);
-      console.log(tile);
     }
+
     //if there is a piece
     else {
       let selectedPiece = tile.querySelector("img");
@@ -239,7 +240,8 @@ tiles.forEach((tile) => {
         pieceType,
         pieceColor,
         tilePositionY,
-        tilePositionX
+        tilePositionX,
+        tile
       );
 
       chessPiece.moveValidator();

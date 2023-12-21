@@ -1,16 +1,15 @@
 class ChessPiece {
-  constructor(pieceType, color, number, letter) {
+  constructor(pieceType, color, number, letter, tile) {
     this.pieceType = pieceType;
     this.color = color;
     this.number = number;
     this.letter = letter;
+    this.tile = tile;
   }
   isEnemyKingCheck() {}
 
   getPosition() {
-    console.log(
-      `currentPosition.${this.color}-${this.pieceType} = ${this.number}${this.letter}`
-    );
+    return `${this.letter}${this.number}`;
   }
 
   getPieceType() {
@@ -34,7 +33,26 @@ class ChessPiece {
   }
 
   movePawn() {
-    console.log("move pawn");
+    let tiles = document.querySelectorAll(".tiles");
+    let pawn = this.tile.querySelector("img");
+    if (pawn === "") {
+      return;
+    } else {
+      for (let i = 1; i < tiles.length; i++) {
+        tiles[i].addEventListener("click", () => {
+          // Assuming 'pawn' is a DOM element representing your pawn
+          // Remove the pawn from its current parent
+
+          if (pawn.parentNode) {
+            pawn.parentNode.removeChild(pawn);
+          }
+
+          // Append the pawn to the clicked tile
+          tiles[i].appendChild(pawn);
+          pawn = "";
+        });
+      }
+    }
   }
 
   moveKing() {

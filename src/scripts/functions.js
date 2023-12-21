@@ -1,5 +1,7 @@
-function test() {
-  console.log("test");
+function test(pieceType, selectedPiecePosition) {
+  // console.log("test");
+  // console.log(selectedPiece);
+  console.log(pieceType + ": " + selectedPiecePosition);
 }
 
 function pieceGenerator(pieceType, pieceColor, number, letter, tile) {
