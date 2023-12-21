@@ -1,0 +1,45 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.chessBoardGrid {
+  display: grid;
+  grid-template-columns: repeat(8, 80px);
+  grid-template-rows: repeat(8, 80px);
+  justify-content: center;
+  align-content: center;
+  padding: 5px;
+  background-color: lightgray;
+  aspect-ratio: 1/1;
+  border: solid 1px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.chessBoardGrid .tiles {
+  border: solid 1px;
+  margin: 1px;
+  border-radius: 2px;
+  background-color: white;
+  position: relative;
+}
+
+img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  aspect-ratio: 1/1;
+  height: 50px;
+}
+
+.pawn {
+  height: 40px;
+}
+
+.selectedPiece {
+  background-color: red;
+}/*# sourceMappingURL=main.css.map */
