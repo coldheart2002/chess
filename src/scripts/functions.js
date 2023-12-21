@@ -1,9 +1,14 @@
+function test() {
+  console.log("test");
+}
+
 function pieceGenerator(pieceType, pieceColor, number, letter, tile) {
   let piece = document.createElement("img");
   piece.setAttribute("class", pieceType);
   piece.setAttribute("src", `./src/chessPieces/${pieceColor}/${pieceType}.png`);
   piece.setAttribute("piece-color", `${pieceColor}`);
   piece.setAttribute("piece-type", `${pieceType}`);
+  piece.classList.add(`${pieceColor}Piece`);
   tile.append(piece);
 }
 
@@ -20,3 +25,5 @@ function pieceColorSelector(color) {
     });
   });
 }
+
+function movePiece() {}
