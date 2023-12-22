@@ -1,3 +1,6 @@
+let defaultBlackPieceColor = "blue";
+let defaultWhitePieceColor = "red";
+
 //chessboard tile position array
 const tileLetters = ["A", "B", "C", "D", "E", "F", "G", "H"];
 const tileNumbers = [8, 7, 6, 5, 4, 3, 2, 1];
@@ -212,28 +215,35 @@ tileNumbers.forEach((number) => {
   });
 });
 
-//click event listener for each piece
-pieceColorSelector("white");
-pieceColorSelector("black");
-
-//all tiles click lisener
+//all tiles click listener
 let tiles = document.querySelectorAll(".tiles");
 
-tiles.forEach((tile) => {
-  tile.addEventListener("click", () => {
-    let tilePositionX = tile.getAttribute("position-x");
-    let tilePositionY = tile.getAttribute("position-y");
+// default tile color
+let defaultTileColor = {
+  light: "lightgray",
+  dark: "darkgray",
+};
 
+tiles.forEach((tile) => {
+  let tilePositionX = tile.getAttribute("position-x");
+  let tilePositionY = tile.getAttribute("position-y");
+
+  tile.addEventListener("click", () => {
     //if there's no piece
-    if (tile.querySelector("img") === null) {
+    if (tile.querySelector("i") === null) {
       console.log(`tile.position = ${tilePositionX}:${tilePositionY}`);
     }
 
     //if there is a piece
     else {
-      let selectedPiece = tile.querySelector("img");
+      let selectedPiece = tile.querySelector("i");
       let pieceType = selectedPiece.getAttribute("piece-type");
       let pieceColor = selectedPiece.getAttribute("piece-color");
+
+      // console.log(pieceType);
+      // console.log(pieceColor);
+      // console.log(tilePositionY);
+      // console.log(tilePositionX);
 
       //create object
       let chessPiece = new ChessPiece(
@@ -243,8 +253,19 @@ tiles.forEach((tile) => {
         tilePositionX,
         tile
       );
-
       chessPiece.moveValidator();
     }
   });
+
+  //add chess alternative color tiles
+  (["8", "6", "4", "2"].includes(tilePositionY) &&
+    ["B", "D", "F", "H"].includes(tilePositionX)) ||
+  (["7", "5", "3", "1"].includes(tilePositionY) &&
+    ["A", "C", "E", "G"].includes(tilePositionX))
+    ? (tile.style.backgroundColor = defaultTileColor.dark)
+    : (tile.style.backgroundColor = defaultTileColor.light);
 });
+
+//click event listener for each piece
+pieceColorSelector("white");
+pieceColorSelector("black");

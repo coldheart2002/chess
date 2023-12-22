@@ -26,21 +26,22 @@
   background-color: white;
   position: relative;
   font-size: 0.7rem;
+  cursor: pointer;
 }
 
-img {
+i {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   aspect-ratio: 1/1;
-  height: 50px;
+  font-size: 60px;
+  color: black;
 }
-
-.pawn {
-  height: 40px;
+i:hover {
+  cursor: grab;
 }
 
 .selectedPiece {
-  background-color: red;
+  opacity: 0.8;
 }/*# sourceMappingURL=main.css.map */
