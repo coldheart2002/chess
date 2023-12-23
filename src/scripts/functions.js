@@ -16,7 +16,7 @@ function pieceGenerator(pieceType, pieceColor, number, letter, tile) {
   tile.append(piece);
 
   //assign color to pieces
-  piece.getAttribute("piece-color") === "white"
+  piece.getAttribute("piece-color") === `${defaultWhitePieceColor}`
     ? (piece.style.color = `${defaultWhitePieceColor}`)
     : (piece.style.color = `${defaultBlackPieceColor}`);
 }

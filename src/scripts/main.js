@@ -1,5 +1,15 @@
-let defaultBlackPieceColor = "blue";
+let defaultBlackPieceColor = "black";
 let defaultWhitePieceColor = "red";
+
+//for display varables
+let display = document.querySelector(".display");
+let displayPieceSelected = document.getElementById("pieceSelected");
+let displayPieceColor = document.getElementById("pieceColor");
+let displayPiecePosition = document.getElementById("piecePosition");
+
+// if (displayPieceSelected.innerText === "") {
+//   display.style.display = "none";
+// }
 
 //chessboard tile position array
 const tileLetters = ["A", "B", "C", "D", "E", "F", "G", "H"];
@@ -16,200 +26,65 @@ tileNumbers.forEach((number) => {
     tile.innerText = letter + number;
     chessBoardGrid.append(tile);
 
-    //set chess pieces
-    if (number === 8) {
-      let color = "black";
-      if (letter === "A") {
-        let pieceType = "rook";
-        pieceGenerator(pieceType, color, number, letter, tile);
-        // let leftBlackRook = new ChessPiece(pieceType, color, number, letter);
-        // leftBlackRook.getPosition();
-      }
-      if (letter === "B") {
-        let pieceType = "knight";
-        pieceGenerator(pieceType, color, number, letter, tile);
-        // let leftBlackKnight = new ChessPiece(pieceType, color, number, letter);
-        // leftBlackKnight.getPosition();
-      }
-      if (letter === "C") {
-        let pieceType = "bishop";
-        pieceGenerator(pieceType, color, number, letter, tile);
-        // let leftBlackBishop = new ChessPiece(pieceType, color, number, letter);
-        // leftBlackBishop.getPosition();
-      }
-      if (letter === "D") {
-        let pieceType = "queen";
-        pieceGenerator(pieceType, color, number, letter, tile);
-        // let blackQueen = new ChessPiece(pieceType, color, number, letter);
-        // blackQueen.getPosition();
-      }
-      if (letter === "E") {
-        let pieceType = "king";
-        pieceGenerator(pieceType, color, number, letter, tile);
-        // let blackKing = new ChessPiece(pieceType, color, number, letter);
-        // blackKing.getPosition();
-      }
-      if (letter === "F") {
-        let pieceType = "bishop";
-        pieceGenerator(pieceType, color, number, letter, tile);
-        // let rightBlackBishop = new ChessPiece(pieceType, color, number, letter);
-        // rightBlackBishop.getPosition();
-      }
-      if (letter === "G") {
-        let pieceType = "knight";
-        pieceGenerator(pieceType, color, number, letter, tile);
-        // let rightBlackKnight = new ChessPiece(pieceType, color, number, letter);
-        // rightBlackKnight.getPosition();
-      }
-      if (letter === "H") {
-        let pieceType = "rook";
-        pieceGenerator(pieceType, color, number, letter, tile);
-        // let rightBlackRook = new ChessPiece(pieceType, color, number, letter);
-        // rightBlackRook.getPosition();
-      }
-    } else if (number === 7) {
+    if (number === 7 || number === 2) {
       let pieceType = "pawn";
-      let color = "black";
-      if (letter === "A") {
+      let color =
+        number === 7 ? defaultBlackPieceColor : defaultWhitePieceColor;
+      pieceGenerator(pieceType, color, number, letter, tile);
+    }
+
+    //rook generator
+    if (number === 8 || number === 1) {
+      let pieceType = "rook";
+      let color =
+        number === 8 ? defaultBlackPieceColor : defaultWhitePieceColor;
+
+      if (letter === "A" || letter === "H") {
         pieceGenerator(pieceType, color, number, letter, tile);
-        // let blackPawnA = new ChessPiece(pieceType, color, number, letter);
-        // blackPawnA.getPosition();
-        // console.log(blackPawnA);
       }
-      if (letter === "B") {
+    }
+
+    //knight generator
+    if (number === 8 || number === 1) {
+      let pieceType = "knight";
+      let color =
+        number === 8 ? defaultBlackPieceColor : defaultWhitePieceColor;
+
+      if (letter === "B" || letter === "G") {
         pieceGenerator(pieceType, color, number, letter, tile);
-        // let blackPawnB = new ChessPiece(pieceType, color, number, letter);
-        // blackPawnB.getPosition();
-        // console.log(blackPawnB);
       }
-      if (letter === "C") {
+    }
+
+    //bishop generator
+    if (number === 8 || number === 1) {
+      let pieceType = "bishop";
+      let color =
+        number === 8 ? defaultBlackPieceColor : defaultWhitePieceColor;
+
+      if (letter === "C" || letter === "F") {
         pieceGenerator(pieceType, color, number, letter, tile);
-        // let blackPawnC = new ChessPiece(pieceType, color, number, letter);
-        // blackPawnC.getPosition();
-        // console.log(blackPawnC);
       }
+    }
+
+    //queen generator
+    if (number === 8 || number === 1) {
+      let pieceType = "queen";
+      let color =
+        number === 8 ? defaultBlackPieceColor : defaultWhitePieceColor;
+
       if (letter === "D") {
         pieceGenerator(pieceType, color, number, letter, tile);
-        // let blackPawnD = new ChessPiece(pieceType, color, number, letter);
-        // blackPawnD.getPosition();
-        // console.log(blackPawnD);
       }
+    }
+
+    //king generator
+    if (number === 8 || number === 1) {
+      let pieceType = "king";
+      let color =
+        number === 8 ? defaultBlackPieceColor : defaultWhitePieceColor;
+
       if (letter === "E") {
         pieceGenerator(pieceType, color, number, letter, tile);
-        // let blackPawnE = new ChessPiece(pieceType, color, number, letter);
-        // blackPawnE.getPosition();
-        // console.log(blackPawnE);
-      }
-      if (letter === "F") {
-        pieceGenerator(pieceType, color, number, letter, tile);
-        // let blackPawnF = new ChessPiece(pieceType, color, number, letter);
-        // blackPawnF.getPosition();
-        // console.log(blackPawnF);
-      }
-      if (letter === "G") {
-        pieceGenerator(pieceType, color, number, letter, tile);
-        // let blackPawnG = new ChessPiece(pieceType, color, number, letter);
-        // blackPawnG.getPosition();
-        // console.log(blackPawnG);
-      }
-      if (letter === "H") {
-        pieceGenerator(pieceType, color, number, letter, tile);
-        // let blackPawnH = new ChessPiece(pieceType, color, number, letter);
-        // blackPawnH.getPosition();
-        // console.log(blackPawnH);
-      }
-    } else if (number === 2) {
-      let pieceType = "pawn";
-      let color = "white";
-      if (letter === "A") {
-        pieceGenerator(pieceType, color, number, letter, tile);
-        // let blackPawnA = new ChessPiece(pieceType, color, number, letter);
-        // blackPawnA.getPosition();
-      }
-      if (letter === "B") {
-        pieceGenerator(pieceType, color, number, letter, tile);
-        // let blackPawnB = new ChessPiece(pieceType, color, number, letter);
-        // blackPawnB.getPosition();
-      }
-      if (letter === "C") {
-        pieceGenerator(pieceType, color, number, letter, tile);
-        // let blackPawnC = new ChessPiece(pieceType, color, number, letter);
-        // blackPawnC.getPosition();
-      }
-      if (letter === "D") {
-        pieceGenerator(pieceType, color, number, letter, tile);
-        // let blackPawnD = new ChessPiece(pieceType, color, number, letter);
-        // blackPawnD.getPosition();
-      }
-      if (letter === "E") {
-        pieceGenerator(pieceType, color, number, letter, tile);
-        // let blackPawnE = new ChessPiece(pieceType, color, number, letter);
-        // blackPawnE.getPosition();
-      }
-      if (letter === "F") {
-        pieceGenerator(pieceType, color, number, letter, tile);
-        // let blackPawnF = new ChessPiece(pieceType, color, number, letter);
-        // blackPawnF.getPosition();
-      }
-      if (letter === "G") {
-        pieceGenerator(pieceType, color, number, letter, tile);
-        // let blackPawnG = new ChessPiece(pieceType, color, number, letter);
-        // blackPawnG.getPosition();
-      }
-      if (letter === "H") {
-        pieceGenerator(pieceType, color, number, letter, tile);
-        // let blackPawnH = new ChessPiece(pieceType, color, number, letter);
-        // blackPawnH.getPosition();
-      }
-    } else if (number === 1) {
-      let color = "white";
-      if (letter === "A") {
-        let pieceType = "rook";
-        pieceGenerator(pieceType, color, number, letter, tile);
-        // let leftWhiteRook = new ChessPiece(pieceType, color, number, letter);
-        // leftWhiteRook.getPosition();
-      }
-      if (letter === "B") {
-        let pieceType = "knight";
-        pieceGenerator(pieceType, color, number, letter, tile);
-        // let leftWhiteKnight = new ChessPiece(pieceType, color, number, letter);
-        // leftWhiteKnight.getPosition();
-      }
-      if (letter === "C") {
-        let pieceType = "bishop";
-        pieceGenerator(pieceType, color, number, letter, tile);
-        // let leftWhiteBishop = new ChessPiece(pieceType, color, number, letter);
-        // leftWhiteBishop.getPosition();
-      }
-      if (letter === "D") {
-        let pieceType = "queen";
-        pieceGenerator(pieceType, color, number, letter, tile);
-        // let whiteQueen = new ChessPiece(pieceType, color, number, letter);
-        // whiteQueen.getPosition();
-      }
-      if (letter === "E") {
-        let pieceType = "king";
-        pieceGenerator(pieceType, color, number, letter, tile);
-        // let whiteKing = new ChessPiece(pieceType, color, number, letter);
-        // whiteKing.getPosition();
-      }
-      if (letter === "F") {
-        let pieceType = "bishop";
-        pieceGenerator(pieceType, color, number, letter, tile);
-        // let rightWhiteBishop = new ChessPiece(pieceType, color, number, letter);
-        // rightWhiteBishop.getPosition();
-      }
-      if (letter === "G") {
-        let pieceType = "knight";
-        pieceGenerator(pieceType, color, number, letter, tile);
-        // let rightWhiteKnight = new ChessPiece(pieceType, color, number, letter);
-        // rightWhiteKnight.getPosition();
-      }
-      if (letter === "H") {
-        let pieceType = "rook";
-        pieceGenerator(pieceType, color, number, letter, tile);
-        // let rightWhiteRook = new ChessPiece(pieceType, color, number, letter);
-        // rightWhiteRook.getPosition();
       }
     }
   });
@@ -239,11 +114,9 @@ tiles.forEach((tile) => {
       let selectedPiece = tile.querySelector("i");
       let pieceType = selectedPiece.getAttribute("piece-type");
       let pieceColor = selectedPiece.getAttribute("piece-color");
-
-      // console.log(pieceType);
-      // console.log(pieceColor);
-      // console.log(tilePositionY);
-      // console.log(tilePositionX);
+      let class1 = selectedPiece.classList[0];
+      let class2 = selectedPiece.classList[1];
+      selectedPieceIcon = `${class1} ${class2}`;
 
       //create object
       let chessPiece = new ChessPiece(
@@ -251,7 +124,11 @@ tiles.forEach((tile) => {
         pieceColor,
         tilePositionY,
         tilePositionX,
-        tile
+        tile,
+        displayPieceSelected,
+        displayPieceColor,
+        displayPiecePosition,
+        selectedPieceIcon
       );
       chessPiece.moveValidator();
     }
