@@ -1,7 +1,7 @@
 let defaultBlackPieceColor = "black";
 let defaultWhitePieceColor = "red";
 
-//for display varables
+//for display variables
 let display = document.querySelector(".display");
 let displayPieceSelected = document.getElementById("pieceSelected");
 let displayPieceColor = document.getElementById("pieceColor");
@@ -26,6 +26,7 @@ tileNumbers.forEach((number) => {
     tile.innerText = letter + number;
     chessBoardGrid.append(tile);
 
+    //pawn generator
     if (number === 7 || number === 2) {
       let pieceType = "pawn";
       let color =
@@ -90,47 +91,38 @@ tileNumbers.forEach((number) => {
   });
 });
 
-//all tiles click listener
-let tiles = document.querySelectorAll(".tiles");
-
 // default tile color
 let defaultTileColor = {
   light: "lightgray",
   dark: "darkgray",
 };
 
+//all tiles click listener
+let tiles = document.querySelectorAll(".tiles");
+
 tiles.forEach((tile) => {
   let tilePositionX = tile.getAttribute("position-x");
   let tilePositionY = tile.getAttribute("position-y");
 
+  //click listener for each tiles
   tile.addEventListener("click", () => {
-    //if there's no piece
-    if (tile.querySelector("i") === null) {
-      console.log(`tile.position = ${tilePositionX}:${tilePositionY}`);
-    }
+    console.log(`tile.position = ${position}`);
 
     //if there is a piece
-    else {
-      let selectedPiece = tile.querySelector("i");
-      let pieceType = selectedPiece.getAttribute("piece-type");
-      let pieceColor = selectedPiece.getAttribute("piece-color");
-      let class1 = selectedPiece.classList[0];
-      let class2 = selectedPiece.classList[1];
-      selectedPieceIcon = `${class1} ${class2}`;
+    if (tile.querySelector("i") !== null) {
+      let piece = tile.querySelector("i");
+      let pieceDetails = {
+        pieceType: piece.getAttribute("piece-type"),
+        pieceColor: piece.getAttribute("piece-color"),
+      };
+      let position = {
+        x: tilePositionX,
+        y: tilePositionY,
+      };
 
       //create object
-      let chessPiece = new ChessPiece(
-        pieceType,
-        pieceColor,
-        tilePositionY,
-        tilePositionX,
-        tile,
-        displayPieceSelected,
-        displayPieceColor,
-        displayPiecePosition,
-        selectedPieceIcon
-      );
-      chessPiece.moveValidator();
+      let chessPiece = new ChessPiece(position, pieceDetails);
+      console.log(chessPiece);
     }
   });
 
@@ -144,5 +136,5 @@ tiles.forEach((tile) => {
 });
 
 //click event listener for each piece
-pieceColorSelector("white");
-pieceColorSelector("black");
+pieceColorSelector(defaultBlackPieceColor);
+pieceColorSelector(defaultWhitePieceColor);

@@ -54,3 +54,9 @@ function pieceColorSelector(color) {
 //     });
 //   });
 // }
+
+function removePieceEventListener() {
+  // let pieces = document.querySelectorAll(`.fa-solid`);
+  console.log("hi");
+  // console.log(pieces.length);
+}

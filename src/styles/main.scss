@@ -3,6 +3,7 @@
   margin: 0;
   box-sizing: border-box;
 }
+
 .display {
   position: absolute;
   z-index: 10;
@@ -52,6 +53,7 @@
     }
   }
 }
+
 .chessBoardGrid {
   cursor: pointer;
   display: grid;
@@ -91,5 +93,6 @@ i {
 }
 
 .selectedPiece {
-  opacity: 0.8;
+  opacity: 0.5;
+  color: green;
 }
