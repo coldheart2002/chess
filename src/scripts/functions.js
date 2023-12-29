@@ -6,8 +6,6 @@ function test(pieceType, selectedPiecePosition) {
 
 function pieceGenerator(pieceType, pieceColor, number, letter, tile) {
   let piece = document.createElement("i");
-  // piece.setAttribute("class", pieceType);
-  // piece.setAttribute("src", `./src/chessPieces/${pieceColor}/${pieceType}.png`);
   piece.setAttribute("piece-color", `${pieceColor}`);
   piece.classList.add("fa-solid");
   piece.setAttribute("piece-type", `${pieceType}`);
@@ -34,29 +32,4 @@ function pieceColorSelector(color) {
       selectedPiece.classList.add("selectedPiece");
     });
   });
-}
-
-// function movePiece() {
-//   let tiles = document.querySelectorAll(".tiles");
-
-//   tiles.forEach((tile) => {
-//     tile.addEventListener("click", () => {
-//       let tilePiece = tile.querySelector("img");
-//       let tilePositionX = tile.getAttribute("position-x");
-//       let tilePositionY = tile.getAttribute("position-y");
-//       console.log(`${tilePositionX}:${tilePositionY}`);
-
-//       console.log(tilePiece);
-
-//       // if (tile.querySelector("img") === null) {
-//       //   tilePiece.remove();
-//       // }
-//     });
-//   });
-// }
-
-function removePieceEventListener() {
-  // let pieces = document.querySelectorAll(`.fa-solid`);
-  console.log("hi");
-  // console.log(pieces.length);
 }

@@ -1,3 +1,15 @@
+//check if online
+window.addEventListener("load", function () {
+  function updateOnlineStatus(event) {
+    if (!navigator.onLine) {
+      alert("You are offline");
+    }
+  }
+
+  window.addEventListener("online", updateOnlineStatus);
+  window.addEventListener("offline", updateOnlineStatus);
+});
+
 let defaultBlackPieceColor = "black";
 let defaultWhitePieceColor = "red";
 
@@ -100,29 +112,33 @@ let defaultTileColor = {
 //all tiles click listener
 let tiles = document.querySelectorAll(".tiles");
 
+let chessPiece;
+
 tiles.forEach((tile) => {
   let tilePositionX = tile.getAttribute("position-x");
   let tilePositionY = tile.getAttribute("position-y");
+  let position = `${tilePositionX}${tilePositionY}`;
+  let piece = tile.querySelector("i");
 
   //click listener for each tiles
   tile.addEventListener("click", () => {
-    console.log(`tile.position = ${position}`);
-
     //if there is a piece
-    if (tile.querySelector("i") !== null) {
-      let piece = tile.querySelector("i");
-      let pieceDetails = {
-        pieceType: piece.getAttribute("piece-type"),
-        pieceColor: piece.getAttribute("piece-color"),
-      };
-      let position = {
-        x: tilePositionX,
-        y: tilePositionY,
-      };
-
+    if (piece !== null) {
       //create object
-      let chessPiece = new ChessPiece(position, pieceDetails);
-      console.log(chessPiece);
+      chessPiece = new ChessPiece(piece, tile);
+
+      chessPiece.move();
+      // let newTile = tiles;
+      // newTile.forEach((tile) => {
+      //   tile.addEventListener("click", () => {
+      //     console.log(tile);
+      //     console.log(
+      //       tile.querySelector("i").classList.remove("selectedPiece")
+      //     );
+      //   });
+      // });
+    } else {
+      console.log(`tile.position = ${position}`);
     }
   });
 
